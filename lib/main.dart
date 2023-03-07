@@ -1,11 +1,7 @@
 // Main function
 import 'package:flutter/material.dart';
+import 'src/app.dart';
 
 void main() {
-  var app = MaterialApp(
-    home: Center(
-      child: Text('Hi there!'),
-    ),
-  );
-  runApp(app);
+  runApp(App());
 }
