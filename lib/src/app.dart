@@ -9,6 +9,8 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   int counter = 0;
 
+  void fetchImage() {}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,11 +33,7 @@ class AppState extends State<App> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              counter++;
-            });
-          },
+          onPressed: fetchImage,
           child: const Icon(Icons.add),
         ),
       ),
