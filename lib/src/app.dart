@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' show Response, get;
+import 'models/image_model.dart';
+import 'widgets/image_list.dart';
 
 class App extends StatefulWidget {
   createState() {
@@ -7,9 +11,25 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
+  // counter to display onscreen, also used to indicate photo id on the API get request
   int counter = 0;
 
-  void fetchImage() {}
+  // used to hold the list of images to be used when updating and displaying images on screen
+  List<ImageModel> images = [];
+
+  /// ## Fetch Images from API endpoint
+  /// API call to fetch images and put them in the images using the ImageModel model type
+  /// Uses the **http package** to make the API get request
+  void fetchImage() async {
+    counter++;
+    var url = Uri.parse('https://jsonplaceholder.typicode.com/photos/$counter');
+    Response response = await get(url);
+
+    ImageModel imageModel = ImageModel.fromJson(json.decode(response.body));
+    setState(() {
+      images.add(imageModel);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +48,6 @@ class AppState extends State<App> {
                 style: TextStyle(fontSize: 24),
               ),
               SizedBox(height: 10),
-              Placeholder(),
             ],
           ),
         ),
