@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/image_model.dart';
+import 'package:basic_utils/basic_utils.dart' show StringUtils;
 
 class ImageList extends StatelessWidget {
   final List<ImageModel> images;
@@ -27,8 +28,10 @@ class ImageList extends StatelessWidget {
       child: Column(
         children: [
           Image.network(image.url),
-          SizedBox(height: 5),
-          Text(image.title),
+          SizedBox(height: 20),
+          Text(
+            StringUtils.capitalize(image.title),
+          ),
         ],
       ),
     );
