@@ -5,6 +5,9 @@ import 'models/image_model.dart';
 import 'widgets/image_list.dart';
 
 class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
   createState() {
     return AppState();
   }
@@ -39,18 +42,7 @@ class AppState extends State<App> {
           elevation: 0,
           title: const Text('Let\'s see some images!'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Text(
-                'Counter is $counter',
-                style: TextStyle(fontSize: 24),
-              ),
-              SizedBox(height: 10),
-            ],
-          ),
-        ),
+        body: ImageList(images),
         floatingActionButton: FloatingActionButton(
           onPressed: fetchImage,
           child: const Icon(Icons.add),
